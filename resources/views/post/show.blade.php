@@ -21,7 +21,7 @@
             <from method="post" action="{{route('post.destroy', $post)}}"
             class="flex-2">
                 @csrf
-                @method('')
+                @method('delete')
                 <x-primary-button class="bg-red-700 ml-2">
                     削除
                 </x-primary-button>
