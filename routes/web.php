@@ -59,6 +59,6 @@ Route::patch('post/{post}', [PostController::class, 'update'])
 Route::delete('post/{post}', [PostController::class, 'destroy'])
 ->name('post.destroy');
 
-\Log::debug('webappテストテスト');
+\Log::debug('web-phpテスト');
 
 require __DIR__.'/auth.php';
