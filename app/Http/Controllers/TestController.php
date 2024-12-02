@@ -12,5 +12,3 @@ class TestController extends Controller
         return view('test', compact('users'));
     }
 }
-
-//test
