@@ -12,7 +12,7 @@
     </div>
     @endif
 
-        <form method="post" action="{{ route('post.update', $post) }}">
+        <from method="post" action="{{ route('post.update', $post) }}">
             @csrf
             @method('patch')
             <div class="mt-8">
@@ -33,6 +33,6 @@
             <x-primary-button class="mt-4">
                 送信する
             </x-primary-button>
-        </form>
+        </from>
     </div>  
 </x-app-layout>

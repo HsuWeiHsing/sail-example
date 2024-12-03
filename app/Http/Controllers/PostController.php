@@ -62,7 +62,7 @@ class PostController extends Controller
         return back();
     }
 
-    public function destroy(Request $request , Post $post) {
+    public function destroy(Request $request, Post $post) {
         \Log::debug('postcontroller-テスト');
         $post->delete();
         $request->session()->flash('message', '削除しました');
