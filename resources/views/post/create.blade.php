@@ -12,7 +12,7 @@
             </div>
         @endif
 
-        <from method="post" action="{{ route('post.store') }}">
+        <form method="post" action="{{ route('post.store') }}">
         @csrf
             <div class="mt-8">
                 <div class="w-full flex flex-col">
@@ -31,6 +31,6 @@
             <x-primary-button class="mt-4">
                 送信する
             </x-primary-button>
-        </from>
+        </form>
     </div>  
 </x-app-layout>

@@ -18,14 +18,14 @@
               </x-primary-button>
             </a>
 
-            <from method="post" action="{{route('post.destroy', $post)}}"
+            <form method="post" action="{{route('post.destroy', $post)}}"
             class="flex-2">
                 @csrf
                 @method('delete')
                 <x-primary-button class="bg-red-700 ml-2">
                     削除
                 </x-primary-button>
-            </from>
+            </form>
             
           </div>
           <hr class="w-full">
