@@ -12,7 +12,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
 
     /**
@@ -20,7 +21,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('post.create');
     }
 
     /**
@@ -28,7 +29,18 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        \Log::debug('postcontroller-テスト-update-01');
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        $post = Post::create($validated);
+
+        $request->session()->flash('message', '保存しました');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -36,7 +48,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -44,7 +56,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -52,14 +64,27 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        $post->update($validated);
+
+        $request->session()->flash('message', '更新しました');
+        return redirect()->route('post.show', compact('post'));
+        //return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy(Request $request, Post $post)
     {
-        //
+        $post->delete();
+        $request->session()->flash('message', '削除しました');
+        return redirect()->route('post.index');
     }
 }
