@@ -11,6 +11,12 @@
           <h1 class="text-lg font-semibold">
             {{ $post->title }}
           </h1>
+
+          @if(session('message'))
+              <div class="text-right flex">
+                  {{ session('message') }}
+              </div>
+          @endif
           <div class="text-right flex">
             <a href="{{route('post.edit', $post)}}" class="flex-1">
               <x-primary-button>

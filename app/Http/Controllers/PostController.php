@@ -73,8 +73,8 @@ class PostController extends Controller
 
         $post->update($validated);
 
-        $request->session()->flash('message', '更新しました');
-        return redirect()->route('post.show', compact('post'));
+        // $request->session()->flash();
+        return redirect()->route('post.show', compact('post'))->with('message', '更新しました');
         //return back();
     }
 
